@@ -18,13 +18,14 @@ with="with l"
 using=""
 # type of plot (plot, splot)
 plot="plot"
-
+# only wait for mouse interaction for 3D plots
+mouse="pause mouse keypress"
 
 #
 # Parse user options.
 #
 cmd=""
-while getopts xf:o:e:w:u: flag
+while getopts xf:o:e:w:u:p: flag
 do
 	case $flag in
 		x)
@@ -65,15 +66,22 @@ do
 done
 
 
+# Don't wait for mouse interaction in dumb terminals, for 2D plots,
+# or for dumping to a file.
+if [ "$term" == "dum" -o "$plot" == "plot" -o -n "$output" ]
+then
+	mouse=""
+fi
+
 # If user set the cmd variable, then use it,
 # otherwise construct our own.
 if [ -z "${cmd}" ]
 then
 	if [ -z "$output" ]
 	then
-		cmd="set terminal ${term}; set output; ${plot} \"${file}\" ${using} ${with}"
+		cmd="set terminal ${term}; set output; ${plot} \"${file}\" ${using} ${with}; ${mouse}"
 	else
-		cmd="set terminal ${term}; set output \"${output}\"; ${plot} \"${file}\" ${using} ${with}"
+		cmd="set terminal ${term}; set output \"${output}\"; ${plot} \"${file}\" ${using} ${with} ${mouse}"
 	fi
 fi
 

@@ -26,6 +26,10 @@ and I get this:
 
 ![screenshot](screenshot_default.png)
 
+Alternately, I could have done this:
+
+    $ ls -ltr . | pipelot -u 0:5
+
 To plot in an x11 window (instead of the ascii terminal) just add the
 `-x` option.  Here are some other options:
 
@@ -44,3 +48,9 @@ For example, to plot the file "file.dat" in an x11 window with dots:
 To plot the output of a command to a png image:
 
     $ <command> | pipelot -o myimage.png
+
+To plot a 3D surface plot:
+
+    $ <command> | pipelot -p splot -x
+
+
