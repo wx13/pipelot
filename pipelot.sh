@@ -13,7 +13,7 @@ output=""
 # input file
 file="-"
 # line style
-with="with l"
+with="w lp"
 # input columns
 using=""
 # type of plot (plot, splot)
