@@ -81,7 +81,7 @@ then
 	then
 		cmd="set terminal ${term}; set output; ${plot} \"${file}\" ${using} ${with}; ${mouse}"
 	else
-		cmd="set terminal ${term}; set output \"${output}\"; ${plot} \"${file}\" ${using} ${with} ${mouse}"
+		cmd="set terminal ${term}; set output \"${output}\"; ${plot} \"${file}\" ${using} ${with}; ${mouse}"
 	fi
 fi
 
